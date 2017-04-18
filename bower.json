@@ -1,0 +1,41 @@
+{
+  "name": "SilexAngularFoundation",
+  "dependencies": {
+    "foundation-sites": "~6.2.0",
+    "motion-ui": "~1.2.2",
+    "angular": "1.4.x",
+    "angular-touch": "1.4.x",
+    "angular-animate": "1.4.x",
+    "angular-mocks": "1.4.x",
+    "angular-route": "1.4.x",
+    "angular-location-update": "0.0.x",
+    "angular-google-maps": "*",
+    "components-font-awesome": "^4.5.0",
+    "underscore": "1.8.x",
+    "spin-js": "2.x.x",
+    "datetimepicker": "2.5.x",
+    "moment":"~2.10",
+    "moment-timezone": "0.5.x",
+    "jquery.cookie": "1.4.x",
+    "ng-tags-input": "3.x.x"
+  },
+  "authors": [
+    "Alexander Uskov <neolord@list.ru>"
+  ],
+  "description": "",
+  "main": "gulpfile.js",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "web/assets",
+    "test",
+    "tests"
+  ]
+}

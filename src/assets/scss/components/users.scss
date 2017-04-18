@@ -1,0 +1,75 @@
+.users-list {
+
+  .users-edit {
+
+    .checkboxes {
+      & > .column {
+        padding-top: 0px;
+      }
+    }
+
+    .title {
+      margin-bottom: 10px;
+    }
+
+    .row {
+      min-width: 400px;
+      max-width: 640px;
+    }
+    input {
+      display: inline-block;
+
+    }
+    span {
+      color: $dark-gray;
+      font-size: 14px;
+    }
+  }
+
+  .fa {
+    margin-right: 5px;
+  }
+
+  .users-menu {
+    padding-left: 19px !important;
+    .fa {
+      margin-right: 7px;
+    }
+  }
+
+  .users-header {
+    background-color: $color-light;
+    font-family: Roboto, sans-serif;
+    color: $white;
+    font-weight: bold;
+
+    .column:first-child {
+      padding-left: 40px;
+    }
+  }
+  .users-item {
+
+    .fa {
+      color: $color-light;
+      cursor: pointer;
+
+      &:hover {
+        color: $color-orange;
+      }
+
+    }
+
+    &:hover {
+      background-color: $light-gray !important;
+    }
+
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    &:nth-child(odd) {
+      background-color: $color-odd;
+    }
+
+  }
+}

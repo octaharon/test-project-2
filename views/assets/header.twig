@@ -1,0 +1,35 @@
+<div class="header row expanded">
+    <div class="title column large-6 medium-5 small-12">My Running App</div>
+    <div class="auth column large-6 medium-7 small-12">
+        <div class="row columns auth-form small-12 medium-12 large-12" ng-if="!User.isAuth()">
+            <form enctype="application/x-www-form-urlencoded">
+                <div class="form-fields row expanded">
+                    <div class="column small-6 medium-6 large-6">
+                        <label>E-mail <input type="text" name="login" ng-model="model.email"/></label>
+                    </div>
+                    <div class="column small-6 medium-6 large-6">
+                        <label>Password <input type="password" name="password" ng-model="model.password"/></label>
+                    </div>
+                </div>
+                <div class="form-links row expanded">
+                    <a href="javascript:;" ng-click="tryLogin()">Log in</a> |
+                    <a href="javascript:;" ng-click="tryRegister()">Create account</a> |
+                    <a href="javascript:;" ng-click="tryReminder()">Restore password</a>
+                </div>
+            </form>
+        </div>
+        <div class="row expanded " ng-if="User.isAuth()">
+            <div class="main-menu column small-12 medium-5 large-8 ">
+                <a href="javascript:;" ng-click="setState('runs')"
+                   ng-class="{'selected':Navigation.state=='runs'}"><i class="fa fa-flash"></i>Runs</a>
+                <a href="javascript:;" ng-click="setState('users')"
+                   ng-class="{'selected':Navigation.state=='users'}" ng-if="User.isManager || User.isAdmin"><i
+                            class="fa fa-user"></i>Users</a>
+            </div>
+            <div class="column small-12 medium-7 large-4 auth-menu">
+                <span>Logged in as <b>{{ User.email }}</b></span>
+                <a href="javascript:;" ng-click="tryLogout()">Log out</a>
+            </div>
+        </div>
+    </div>
+</div>

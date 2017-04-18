@@ -1,0 +1,8 @@
+timezone: Europe/Budapest
+
+logger:
+    class: \Providers\Logger\FileLogHandler
+
+unixUser:
+    owner: www-data
+    group: www-admin

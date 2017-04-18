@@ -1,0 +1,70 @@
+<div>
+    <cmp-paging></cmp-paging>
+    <div class="users-list row columns expanded">
+        <div class="users-edit modal-win" style="display: none;">
+            <div class="title columns">
+                <span ng-if="subject && subject.id>0">Editing user</span>
+                <span ng-if="subject && subject.id==0">New user</span>
+            </div>
+            <div class="row">
+                <div class="column small-12 medium-12 large-12">
+                    <label for="user-email">E-mail</label><input type="text" id="user-email" ng-model="subject.email"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column small-12 medium-12 large-12">
+                    <label for="user-password">Password (leave blank to <span ng-if="subject.id==0">auto-generate</span><Span
+                                ng-if="subject.id!=0">keep old one</Span>)</label><input maxlength="15" type="password"
+                                                                                         id="user-password"
+                                                                                         ng-model="subject.password"/>
+                </div>
+            </div>
+            <div class="row checkboxes" ng-if="User.isAdmin">
+                <div class="column small-6 medium-6 large-6 middle">
+                    <label for="user-ismanager">Manager</label><input type="checkbox" id="user-ismanager"
+                                                                      ng-model="subject.is_manager"/>
+                </div>
+                <div class="column small-6 medium-6 large-6 middle">
+                    <label for="user-isadmin">Administrator</label><input type="checkbox" id="user-isadmin"
+                                                                          ng-model="subject.is_admin"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="button-group text-center">
+                    <button class="button save">Save</button>
+                    <button class="button cancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+        <div class="users-menu row columns expanded">
+            <a href="javascript:;" ng-click="createUser()"><i class="fa fa-plus"></i>Create new account</a>
+        </div>
+        <div class="users-header collapse row columns expanded">
+            <div class="column small-4 medium-6 large-8">
+                E-mail
+            </div>
+            <div class="column small-4 medium-3 large-2">
+                Manager
+            </div>
+            <div class="column small-4 medium-3 large-2">
+                Administrator
+            </div>
+        </div>
+        <div class="users-item collapse row columns expanded" ng-repeat="item in getItems() track by item.id">
+            <div class="column small-4 medium-8 large-8">
+                <i class="fa fa-edit" ng-click="editUser(item.id)"></i><i class="fa fa-times-circle"
+                                                                          ng-click="deleteUser(item.id)"></i>
+                {{ item.email }}
+            </div>
+            <div class="column small-4 medium-3 large-2">
+                <span ng-if="item.is_manager">Yes</span>
+                <span ng-if="!item.is_manager">No</span>
+            </div>
+            <div class="column small-4 medium-3 large-2">
+                <span ng-if="item.is_admin">Yes</span>
+                <span ng-if="!item.is_admin">No</span>
+            </div>
+        </div>
+
+    </div>
+</div>

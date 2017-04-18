@@ -1,0 +1,127 @@
+<div>
+    <div class="stats row columns expanded">
+        <div class="menu-filter column small-12 medium-12 large-4">
+            <div class="row columns expanded">
+                <label>From</label>
+                <input class="menu-filter-from" ng-model='filter.dateFrom' type="text" ng-datepicker/>
+                <a href="javascript:;" ng-click="loadData()"><i class="fa fa-refresh"></i> Refresh</a>
+            </div>
+            <div class="row columns expanded">
+                <label>To</label>
+                <input class="menu-filter-to" ng-model='filter.dateTo' type="text" ng-datepicker/>
+                <a href="javascript:;" ng-click="resetFilter()"><i class="fa fa-times"></i> Clear filter</a>
+
+            </div>
+            <div class="row columns expanded" ng-if="User.isAdmin">
+                <label>User</label>
+                <select ng-model="filter.user_id" ng-model-options="{'updateOn':'default change blur'}"
+                        ng-options="usr.id as usr.email for usr in UserList.records">
+                </select>
+            </div>
+        </div>
+        <div class="column small-4 medium-4 large-3 end">
+            <div class="row stat-header">All period weekly average:</div>
+            <div class="row">Distance: <em>{{ stats.totalAvg.distance | number:0 }}m</em></div>
+            <div class="row">Speed: <em>{{ stats.totalAvg.spd | speed }}</em></div>
+        </div>
+        <div class="column small-4 medium-4 large-2">
+            <div class="row stat-header">Last 7 days totals:</div>
+            <div class="row">Distance: <em>{{ stats.lastWeekTotal.distance | number:0 }}m</em></div>
+            <div class="row">Time: <em>{{ stats.lastWeekTotal.time | duration }}</em></div>
+        </div>
+        <div class="column small-4 medium-4 large-3">
+            <div class="row stat-header">Last 7 days average:</div>
+            <div class="row">Distance: <em>{{ stats.lastWeekAvg.distance | number:0 }}m</em></div>
+            <div class="row">Speed: <em>{{ stats.lastWeekAvg.spd | speed }}</em></div>
+        </div>
+
+    </div>
+    <cmp-paging></cmp-paging>
+    <div class="runs-list row columns expanded">
+        <div class="runs-edit modal-win" style="display: none;">
+            <div class="title columns">
+                <span ng-if="subject && subject.id>0">Editing record</span>
+                <span ng-if="subject && subject.id==0">New record</span>
+            </div>
+            <div class="row" ng-if="User.isAdmin">
+                <div class="column small-7 medium-8 large-9">
+                    <label for="run-user">User</label>
+                    <select ng-model="subject.user_id" ng-model-options="{'updateOn':'default change blur'}"
+                            ng-options="usr.id as usr.email for usr in UserList.records">
+                    </select>
+                </div>
+                <div class="column small-5 medium-4 large-3 middle">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="column small-7 medium-8 large-9">
+                    <label for="run-date">Date</label><input type="text" id="run-date" ng-datepicker
+                                                             ng-model="subject.date"/>
+                </div>
+                <div class="column small-5 medium-4 large-3 middle">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="column small-7 medium-8 large-9">
+                    <label for="run-distance">Distance</label><input type="text" id="run-distance" ng-integer
+                                                                     ng-model="subject.distance"/>
+                </div>
+                <div class="column small-5 medium-4 large-3 middle">
+                    <span> meters</span>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="column small-7 medium-8 large-9">
+                    <label for="run-time">Time</label><input type="text" ng-integer id="run-time"
+                                                             ng-model="subject.duration"/>
+                </div>
+                <div class="column small-5 medium-4 large-3 middle">
+                    <span> seconds</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="button-group text-center">
+                    <button class="button save">Save</button>
+                    <button class="button cancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+        <div class="runs-menu row columns expanded">
+            <a href="javascript:;" ng-click="createRun()"><i class="fa fa-plus"></i>Add a record</a>
+        </div>
+        <div class="runs-header row columns expanded">
+            <div class="column small-6 medium-3 large-3">
+                Date
+            </div>
+            <div class="column small-6 medium-3 large-3">
+                Distance
+            </div>
+            <div class="column small-6 medium-3 large-3">
+                Time
+            </div>
+            <div class="column small-6 medium-3 large-3">
+                Average speed
+            </div>
+        </div>
+        <div class="runs-item row columns expanded" ng-repeat="item in getItems() track by item.id">
+            <div class="column small-6 medium-3 large-3">
+                <i class="fa fa-edit" ng-click="editRun(item.id)"></i><i class="fa fa-times-circle"
+                                                                         ng-click="deleteRun(item.id)"></i>
+                {{ item.date }}
+            </div>
+            <div class="column small-6 medium-3 large-3">
+                {{ item.distance | number:0 }}m
+            </div>
+            <div class="column small-6 medium-3 large-3">
+                {{ item.duration | duration }}
+            </div>
+            <div class="column small-6 medium-3 large-3">
+                {{ item.speed | speed }}
+            </div>
+        </div>
+
+    </div>
+</div>

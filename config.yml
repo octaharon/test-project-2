@@ -1,0 +1,109 @@
+# Autoprefixer will make sure your CSS works with these browsers
+COMPATIBILITY:
+  - "last 2 versions"
+  - "ie >= 9"
+
+# Gulp will reference these paths when it copies files
+PATHS:
+  # Path to dist folder
+  dist: "web/assets"
+  src: "src/assets"
+  
+  # Path to styles folders
+  sass:
+    index: "src/assets/scss/app.scss"
+    watches: "src/assets/scss/**/*"
+    # Paths to Sass libraries, which can then be loaded with @import
+    vendor: 
+    - "bower_modules/foundation-sites/scss"
+    - "bower_modules/motion-ui/src"
+    - "bower_modules/components-font-awesome/scss"
+  less: 
+    index: "src/assets/less/app.less"
+    watches:  "src/assets/less/**/*"
+  # Paths to static assets
+  assets:
+    fonts:
+    - "bower_modules/components-font-awesome/fonts/**/*"
+    - "src/assets/fonts/**/*"
+    css:
+    - "src/assets/css/**/*"
+    - "bower_modules/datetimepicker/jquery.datetimepicker.css"
+    - "bower_modules/ng-tags-input/ng-tags-input.min.css"
+    templates:
+    - "src/assets/templates/**/*"
+    misc:
+    - "src/assets/**"
+    - "!src/assets/{scss,less,css,js,img,templates,fonts}"
+    - "!src/assets/{scss,less,css,js,img,templates,fonts}/**"
+  images:
+    - "src/assets/img/**/*"
+  # Paths to JavaScript libraries, which are compined into one file
+  javascript:
+    vendor:
+    # Libraries requried by Foundation
+    - "bower_modules/jquery/dist/jquery.js"
+    - "bower_modules/what-input/what-input.js"
+    - "bower_modules/jquery-mousewheel/jquery.mousewheel.js"
+    - "bower_modules/php-date-formatter/js/php-date-formatter.js"
+    - "bower_modules/datetimepicker/jquery.datetimepicker.js"
+    - "bower_modules/jquery.cookie/jquery.cookie.js"
+    # Other Libaries
+    - "bower_modules/moment/min/moment-with-locales.js"
+    - "bower_modules/moment-timezone/builds/moment-timezone-with-data.js"
+    - "bower_modules/lodash/dist/lodash.js"
+    # Angular
+    - "bower_modules/angular/angular.js"
+    - "bower_modules/angular-animate/angular-animate.js"
+    - "bower_modules/angular-touch/angular-touch.js"
+    - "bower_modules/angular-mocks/angular-mocks.js"
+    - "bower_modules/angular-route/angular-route.js"
+    - "bower_modules/angular-moment/angular-moment.js"
+    - "bower_modules/angular-location-update/angular-location-update.js"
+    - "bower_modules/angular-simple-logger/dist/angular-simple-logger.js"
+    - "bower_modules/ng-tags-input/ng-tags-input.min.js"
+    # GMaps
+#    - "bower_modules/markerclustererplus/dist/markerclusterer.min.js"
+#    - "bower_modules/js-rich-marker/src/richmarker-compiled.js"
+#    - "bower_modules/angular-google-maps/dist/angular-google-maps.min.js"
+#    - "bower_modules/google-maps-utility-library-v3-markerwithlabel/dist/markerwithlabel.min.js"
+#    - "bower_modules/google-maps-utility-library-v3-keydragzoom/dist/keydragzoom.min.js"
+#    - "bower_modules/google-maps-utility-library-v3-infobox/dist/infobox.min.js"
+    # Motion UI
+    - "bower_modules/motion-ui/dist/motion-ui.js"
+    # Core Foundation files
+    - "bower_modules/foundation-sites/js/foundation.core.js"
+    - "bower_modules/foundation-sites/js/foundation.util.*.js"
+    # Individual Foundation components
+    # If you aren't using a component, just remove it from the list
+    - "bower_modules/foundation-sites/js/foundation.abide.js"
+    - "bower_modules/foundation-sites/js/foundation.accordion.js"
+    - "bower_modules/foundation-sites/js/foundation.accordionMenu.js"
+    - "bower_modules/foundation-sites/js/foundation.drilldown.js"
+    - "bower_modules/foundation-sites/js/foundation.dropdown.js"
+    - "bower_modules/foundation-sites/js/foundation.dropdownMenu.js"
+    - "bower_modules/foundation-sites/js/foundation.equalizer.js"
+    - "bower_modules/foundation-sites/js/foundation.interchange.js"
+    - "bower_modules/foundation-sites/js/foundation.magellan.js"
+    - "bower_modules/foundation-sites/js/foundation.offcanvas.js"
+    - "bower_modules/foundation-sites/js/foundation.orbit.js"
+    - "bower_modules/foundation-sites/js/foundation.responsiveMenu.js"
+    - "bower_modules/foundation-sites/js/foundation.responsiveToggle.js"
+    - "bower_modules/foundation-sites/js/foundation.reveal.js"
+    - "bower_modules/foundation-sites/js/foundation.slider.js"
+    - "bower_modules/foundation-sites/js/foundation.sticky.js"
+    - "bower_modules/foundation-sites/js/foundation.tabs.js"
+    - "bower_modules/foundation-sites/js/foundation.toggler.js"
+    - "bower_modules/foundation-sites/js/foundation.tooltip.js"
+    - "bower_modules/foundation-sites/js/foundation.util.keyboard.js"
+    - "bower_modules/foundation-sites/js/foundation.util.box.js"
+    - "bower_modules/foundation-sites/js/foundation.util.triggers.js"
+    - "bower_modules/foundation-sites/js/foundation.util.mediaQuery.js"
+    - "bower_modules/foundation-sites/js/foundation.util.motion.js"
+    - "bower_modules/underscore/underscore.js"
+    - "bower_modules/spin-js/spin.js"
+    project:
+    # Paths to your own project code are here
+    - "src/assets/js/!(app).js"
+    - "src/assets/js/app.js"
+    - "src/assets/js/**/*.js"

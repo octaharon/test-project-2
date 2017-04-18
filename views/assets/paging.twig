@@ -1,0 +1,19 @@
+<div class="row expanded">
+    <ul class="pagination text-center">
+        <li class="pagination-previous" ng-if="Pagination.page>0 && Pagination.pageCount>1">
+            <a href="javascript:;" ng-click="prevPage()">Previous</a>
+        </li>
+        <li class="pagination-previous disabled" ng-if="Pagination.page==0 && Pagination.pageCount>1">Previous</li>
+        <li ng-repeat="i in getPages() track by $index" ng-class="{current:$index==Pagination.page}"
+            ng-click="toPage($index)">
+            <span ng-if="$index==Pagination.page">{{ $index+1 }}</span>
+            <a href="javascipt:;" ng-click="toPage($index)" ng-if="$index!=Pagination.page">{{ $index+1 }}</a>
+        </li>
+        <li class="pagination-next" ng-if="Pagination.page<Pagination.pageCount-1 && Pagination.pageCount>1">
+            <a href="javascript:;" ng-click="nextPage()">Next</a>
+        </li>
+        <li class="pagination-previous disabled"
+            ng-if="Pagination.page==Pagination.pageCount-1 && Pagination.pageCount>1">Next
+        </li>
+    </ul>
+</div>

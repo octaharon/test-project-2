@@ -1,0 +1,46 @@
+index:
+    path: /
+    defaults: { _controller: Controllers\WebSiteController::indexAction }
+login:
+    path: /api/signin
+    defaults: { _controller: Controllers\ApiController::loginAction }
+signup:
+    path: /api/signup
+    defaults: { _controller: Controllers\ApiController::signupAction }
+reminder:
+    path: /api/reminder
+    defaults: { _controller: Controllers\ApiController::reminderAction }
+logout:
+    path: /api/logout
+    defaults: { _controller: Controllers\ApiController::logoutAction }
+runs_read:
+    path: /api/runs/read
+    defaults: { _controller: Controllers\RunsCRUDController::readRunsAction }
+runs_create:
+    path: /api/runs/create
+    defaults: { _controller: Controllers\RunsCRUDController::createRunsAction }
+runs_update:
+    path: /api/runs/update
+    defaults: { _controller: Controllers\RunsCRUDController::updateRunsAction }
+runs_delete:
+    path: /api/runs/delete
+    defaults: { _controller: Controllers\RunsCRUDController::deleteRunsAction }
+users_read:
+    path: /api/users/read
+    defaults: { _controller: Controllers\UserCRUDController::readUsersAction }
+users_create:
+    path: /api/users/create
+    defaults: { _controller: Controllers\UserCRUDController::createUsersAction }
+users_update:
+    path: /api/users/update
+    defaults: { _controller: Controllers\UserCRUDController::updateUsersAction }
+users_delete:
+    path: /api/users/delete
+    defaults: { _controller: Controllers\UserCRUDController::deleteUsersAction }
+
+assets:
+    path: /assets/{path}
+    defaults: { _controller: Controllers\WebSiteController::assetsAction }
+    requirements:
+        path: '.*'
+

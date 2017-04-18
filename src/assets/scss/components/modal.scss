@@ -1,0 +1,76 @@
+.modal-win {
+  z-index: 10000;
+  padding: 20px;
+  border-radius: 10px;
+  position: absolute;
+  @include absolute-center;
+  border: 1px solid $medium-gray;
+  box-sizing: border-box;
+
+  background: $white;
+  font-size: 18px;
+  color: $black;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.7);
+
+  .row {
+    margin-bottom: 15px !important;
+
+    &:last-child {
+      padding-bottom: 0px;
+      margin-bottom: 0px;
+    }
+
+    .column {
+      &:first-child {
+        padding-right: 0px;
+      }
+      &:nth-child(2) {
+        padding-left: 5px;
+        padding-top: 22px;
+      }
+    }
+  }
+
+  input, label {
+    margin-bottom: 0 !important;
+  }
+}
+
+.button {
+  display: inline-block;
+  font-family: Roboto, sans-serif;
+  font-weight: normal;
+  margin-bottom: 0 !important;
+  cursor: pointer;
+  &:hover {
+    color: $light-gray;
+  }
+}
+
+.button-group {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.modal-bg {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.6);
+  z-index: 9000;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  .modal-msg {
+    max-width: 680px;
+    .modal-text {
+      text-align: center;
+    }
+
+    button {
+      @extend .button;
+    }
+  }
+}
