@@ -17,6 +17,15 @@ class RunsCRUDController {
         return true;
     }
 
+    protected function deny() {
+        return new JsonResponse([
+            'success' => false,
+            'errors' => [
+                'token' => 'Permission denied'
+            ]
+        ], 403);
+    }
+
     public function readRunsAction(Application $app) {
         /**
          * @var $user User
@@ -25,22 +34,12 @@ class RunsCRUDController {
         if ($app->getRequest()->get('token')) {
             $user = $app->getObjectCache()->getTokenWrapper()->useToken($app->getRequest()->get('token'));
             if (!$user)
-                return new JsonResponse([
-                    'success' => false,
-                    'errors' => [
-                        'token' => 'Permission denied'
-                    ]
-                ]);
+                return $this->deny();
             if (!$subject_id) {
                 $subject_id = $user->get('id');
             } else {
                 if (!$this->checkAccess($app, $user, $subject_id))
-                    return new JsonResponse([
-                        'success' => false,
-                        'errors' => [
-                            'token' => 'Permission denied'
-                        ]
-                    ]);
+                    return $this->deny();
             }
             $data = $app->getObjectCache()->getRunsWrapper()->loadFiltered(
                 $subject_id,
@@ -57,12 +56,7 @@ class RunsCRUDController {
             ]);
 
         }
-        return new JsonResponse([
-            'success' => false,
-            'errors' => [
-                'token' => 'Permission denied'
-            ]
-        ]);
+        return $this->deny();
     }
 
     public function updateRunsAction(Application $app) {
@@ -73,12 +67,7 @@ class RunsCRUDController {
         if ($app->getRequest()->get('token')) {
             $user = $app->getObjectCache()->getTokenWrapper()->useToken($app->getRequest()->get('token'));
             if (!$user)
-                return new JsonResponse([
-                    'success' => false,
-                    'errors' => [
-                        'token' => 'Permission denied'
-                    ]
-                ]);
+                return $this->deny();
             $subject = $app->getObjectCache()->getRunsWrapper()->findById($subject_id);
             if (!$subject)
                 return new JsonResponse([
@@ -86,14 +75,9 @@ class RunsCRUDController {
                     'errors' => [
                         'id' => 'Record not found'
                     ]
-                ]);
+                ], 404);
             if (!$this->checkAccess($app, $user, $subject->get('user_id')))
-                return new JsonResponse([
-                    'success' => false,
-                    'errors' => [
-                        'token' => 'Permission denied'
-                    ]
-                ]);
+                return $this->deny();
 
             if ($app->getRequest()->get('user_id') && $user->isAdmin()) //only admin can change record user_id
             {
@@ -119,12 +103,7 @@ class RunsCRUDController {
                 'success' => true
             ]);
         }
-        return new JsonResponse([
-            'success' => false,
-            'errors' => [
-                'token' => 'Permission denied'
-            ]
-        ]);
+        return $this->deny();
     }
 
     public function createRunsAction(Application $app) {
@@ -135,23 +114,13 @@ class RunsCRUDController {
         if ($app->getRequest()->get('token')) {
             $user = $app->getObjectCache()->getTokenWrapper()->useToken($app->getRequest()->get('token'));
             if (!$user)
-                return new JsonResponse([
-                    'success' => false,
-                    'errors' => [
-                        'token' => 'Permission denied'
-                    ]
-                ]);
+                return $this->deny();
             $subject = $app->getObjectCache()->getRunsWrapper()->factoryObject();
             if (!$user_id)
                 $user_id = $user->get('id');
             else
                 if (!$this->checkAccess($app, $user, $user_id))
-                    return new JsonResponse([
-                        'success' => false,
-                        'errors' => [
-                            'token' => 'Permission denied'
-                        ]
-                    ]);
+                    return $this->deny();
 
             $subject->setUser($user_id);
             $subject->setDistance($app->getRequest()->get('distance'));
@@ -172,12 +141,7 @@ class RunsCRUDController {
                 'success' => true
             ]);
         }
-        return new JsonResponse([
-            'success' => false,
-            'errors' => [
-                'token' => 'Permission denied'
-            ]
-        ]);
+        return $this->deny();
     }
 
     public function deleteRunsAction(Application $app) {
@@ -188,12 +152,7 @@ class RunsCRUDController {
         if ($app->getRequest()->get('token')) {
             $user = $app->getObjectCache()->getTokenWrapper()->useToken($app->getRequest()->get('token'));
             if (!$user)
-                return new JsonResponse([
-                    'success' => false,
-                    'errors' => [
-                        'token' => 'Permission denied'
-                    ]
-                ]);
+                return $this->deny();
             $subject = $app->getObjectCache()->getRunsWrapper()->findById($subject_id);
             if (!$subject)
                 return new JsonResponse([
@@ -201,14 +160,9 @@ class RunsCRUDController {
                     'errors' => [
                         'id' => 'Record not found'
                     ]
-                ]);
+                ], 404);
             if (!$this->checkAccess($app, $user, $subject->get('user_id')))
-                return new JsonResponse([
-                    'success' => false,
-                    'errors' => [
-                        'token' => 'Permission denied'
-                    ]
-                ]);
+                return $this->deny();
 
 
             $subject->delete();
@@ -217,12 +171,7 @@ class RunsCRUDController {
                 'success' => true
             ]);
         }
-        return new JsonResponse([
-            'success' => false,
-            'errors' => [
-                'token' => 'Permission denied'
-            ]
-        ]);
+        return $this->deny();
     }
 
 

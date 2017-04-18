@@ -13,7 +13,7 @@
             setTotal: function (total) {
                 Pagination.total = parseInt(total);
                 Pagination.pageCount = Math.ceil(Pagination.total / Pagination.onPage);
-                if (Pagination.page * Pagination.onPage > Pagination.total)
+                if (Pagination.page * Pagination.onPage >= Pagination.total)
                     Pagination.page = Math.floor(Pagination.total / Pagination.onPage);
             }
         };

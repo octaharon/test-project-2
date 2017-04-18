@@ -204,7 +204,7 @@
                         return item.id == id;
                     });
                     if (lookup.length)
-                        $scope.subject = lookup[0];
+                        $scope.subject = $.extend({}, lookup[0], true);
                     else
                         return Modal.showModal('Invalid record id');
                     $scope.showForm();
