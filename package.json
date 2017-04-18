@@ -1,6 +1,6 @@
 {
   "name": "SilexAngularFoundation",
-  "version": "0.0.1",
+  "version": "0.1.2",
   "description": "Startup template",
   "main": "gulpfile.babel.js",
   "scripts": {
@@ -56,7 +56,6 @@
     "karma-jasmine": "*",
     "main-bower-files": "^2.13.1",
     "merge-stream": "*",
-    "mysql": "*",
     "pump": "*",
     "rimraf": "^2.4.3",
     "style-sherpa": "^1.0.0",
