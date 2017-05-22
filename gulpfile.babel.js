@@ -48,7 +48,7 @@ gulp.task('build-css', css);
 gulp.task('watch', watch);
 
 //Install and watch
-gulp.task('update', gulp.series(composer, bower, 'build'));
+gulp.task('update', gulp.series(composer, bower, 'build','watch'));
 
 //Install
 gulp.task('install', gulp.series(composer, bower, 'build'));
