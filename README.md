@@ -13,3 +13,4 @@ or just
 *gulp install*   
 
 Don't forget to import a db.sql into your server and set up connection settings in **config/config.yml**
+See **config/config_common.yml** for an example, but better not change it directly, as **config.yml** overrides it
