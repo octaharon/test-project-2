@@ -11,3 +11,5 @@ and then
 *gulp build*   
 or just   
 *gulp install*   
+
+Don't forget to import a db.sql into your server and set up connection settings in **config/config.yml**
