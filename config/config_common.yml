@@ -6,3 +6,18 @@ logger:
 unixUser:
     owner: www-data
     group: www-admin
+
+debug: true
+
+mysql:
+    host: 'localhost'
+    user: 'root'
+    password: ''
+    baseName: 'dbname'
+
+mail:
+    host: smtp.yourserver.com
+    port: 465
+    secure: 'ssl'
+    email: some@yourserver.com
+    password: password
